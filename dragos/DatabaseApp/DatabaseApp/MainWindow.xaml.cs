@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +13,10 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+using MySql.Data.MySqlClient;
+using System.Data;
+using System.Configuration;
+
 namespace DatabaseApp
 {
     /// <summary>
@@ -21,33 +24,32 @@ namespace DatabaseApp
     /// </summary>
     public partial class MainWindow : Window
     {
+        DataTable MyDataTable { get; set; }
+
         public MainWindow()
         {
             InitializeComponent();
+            MyDataTable = new DataTable();
 
-            string connString = "serverConnectionString";
-            SqlConnection conn = new SqlConnection(connString);
+            string connString = ConfigurationManager.ConnectionStrings["connString"].ToString();
+            MySqlConnection conn = new MySqlConnection(connString);
 
-            string sql1 = "create table tabel (id int, name varchar(255))";
-            string sql2 = "select * from tabel";
+            string sqlCommand = "select * from studenti";
             try
             {
                 conn.Open();
 
-                SqlCommand command1 = new SqlCommand(sql1, conn);
-                command1.ExecuteNonQuery();
-                command1.Dispose();
+                MySqlDataAdapter sda = new MySqlDataAdapter(sqlCommand, conn);
+                sda.Fill(MyDataTable);
 
-                SqlCommand command2 = new SqlCommand(sql2, conn);
-                command2.ExecuteNonQuery();
-                command2.Dispose();
-            
-                conn.Close();
-                MessageBox.Show(" ExecuteNonQuery in SqlCommand executed !!");
+                MyGuiTable.DataContext = MyDataTable;
+                MyGuiTable.ItemsSource = MyDataTable.DefaultView;
+
+                MessageBox.Show("Sql Command Executed!");
             }
             catch (Exception e)
             {
-                MessageBox.Show("Can not open connection ! ");
+                MessageBox.Show("Connection Error! Data: " + e.Data);
             }
         }
     }
