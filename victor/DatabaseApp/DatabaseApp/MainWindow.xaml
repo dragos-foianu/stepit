@@ -24,6 +24,8 @@
             <Button Content="Add" Click="addButton"/>
             <Button Content="Remove" Click="removeButton"/>
             <Button Content="Update" Click="updateButton"/>
+            <Button Content="Search" Click="searchButton"/>
+            <Button Content="Refresh" Click="refreshButton"/>
         </UniformGrid>
     </Grid>
 </Window>

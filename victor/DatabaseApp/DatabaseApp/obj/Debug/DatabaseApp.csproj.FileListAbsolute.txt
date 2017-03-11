@@ -1,0 +1,15 @@
+C:\Users\Student\Desktop\New folder (5)\stepit\dragos\DatabaseApp\DatabaseApp\bin\Debug\DatabaseApp.exe.config
+C:\Users\Student\Desktop\New folder (5)\stepit\dragos\DatabaseApp\DatabaseApp\bin\Debug\DatabaseApp.exe
+C:\Users\Student\Desktop\New folder (5)\stepit\dragos\DatabaseApp\DatabaseApp\bin\Debug\DatabaseApp.pdb
+C:\Users\Student\Desktop\New folder (5)\stepit\dragos\DatabaseApp\DatabaseApp\bin\Debug\MySql.Data.dll
+C:\Users\Student\Desktop\New folder (5)\stepit\dragos\DatabaseApp\DatabaseApp\obj\Debug\DatabaseApp.csprojResolveAssemblyReference.cache
+C:\Users\Student\Desktop\New folder (5)\stepit\dragos\DatabaseApp\DatabaseApp\obj\Debug\MainWindow.g.cs
+C:\Users\Student\Desktop\New folder (5)\stepit\dragos\DatabaseApp\DatabaseApp\obj\Debug\App.g.cs
+C:\Users\Student\Desktop\New folder (5)\stepit\dragos\DatabaseApp\DatabaseApp\obj\Debug\DatabaseApp_MarkupCompile.cache
+C:\Users\Student\Desktop\New folder (5)\stepit\dragos\DatabaseApp\DatabaseApp\obj\Debug\DatabaseApp_MarkupCompile.lref
+C:\Users\Student\Desktop\New folder (5)\stepit\dragos\DatabaseApp\DatabaseApp\obj\Debug\MainWindow.baml
+C:\Users\Student\Desktop\New folder (5)\stepit\dragos\DatabaseApp\DatabaseApp\obj\Debug\DatabaseApp.g.resources
+C:\Users\Student\Desktop\New folder (5)\stepit\dragos\DatabaseApp\DatabaseApp\obj\Debug\DatabaseApp.Properties.Resources.resources
+C:\Users\Student\Desktop\New folder (5)\stepit\dragos\DatabaseApp\DatabaseApp\obj\Debug\DatabaseApp.csproj.GenerateResource.Cache
+C:\Users\Student\Desktop\New folder (5)\stepit\dragos\DatabaseApp\DatabaseApp\obj\Debug\DatabaseApp.exe
+C:\Users\Student\Desktop\New folder (5)\stepit\dragos\DatabaseApp\DatabaseApp\obj\Debug\DatabaseApp.pdb
