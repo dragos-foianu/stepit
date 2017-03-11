@@ -89,7 +89,7 @@ namespace DatabaseApp
             string comment = CommentBox.Text;
 
             string sqlCommand = "select * from studenti;";
-            string deleteCommand = String.Format("delete from studenti where ID='{0}' or Name='{1}' or Nota='{2}' or Comment='{3}';", id, nume, nota, comment);
+            string deleteCommand = String.Format("DELETE FROM studenti WHERE (id = '{0}') OR (nume = '{1}') OR (nota = '{2}') OR (comment = '{3}';", id, nume, nota, comment);
 
             try
             {
@@ -112,7 +112,31 @@ namespace DatabaseApp
 
         private void updateButton(object sender, RoutedEventArgs e)
         {
+            string id = IdBox.Text;
+            string nume = NumeBox.Text;
+            string nota = NotaBox.Text;
+            string comment = CommentBox.Text;
 
+            string sqlCommand = "select * from studenti;";
+            string updateCommand = String.Format("UPDATE studenti SET nume = '{1}', nota = '{2}', comment = '{3}' WHERE ID = '{0}' ;", id, nume, nota, comment);
+
+            try
+            {
+                MyDataTable.Clear();
+                MySqlCommand ins = new MySqlCommand(updateCommand, conn);
+                MySqlDataAdapter sda = new MySqlDataAdapter(sqlCommand, conn);
+                ins.ExecuteNonQuery();
+                sda.Fill(MyDataTable);
+
+                MyGuiTable.DataContext = MyDataTable;
+                MyGuiTable.ItemsSource = MyDataTable.DefaultView;
+
+                MessageBox.Show("Update Command Executed!");
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Connection Error!");
+            }
         }
     }
 }
