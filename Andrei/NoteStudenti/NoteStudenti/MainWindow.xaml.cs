@@ -20,16 +20,15 @@ using System.Collections.ObjectModel;
 
 namespace NoteStudenti
 {
-    
     public partial class MainWindow : Window
     {
         ObservableCollection<string> names;
-        public ObservableCollection<string> Names {
-            get { return names; }
-            set { names = value; }
-        }
+        public ObservableCollection<string> Names { get { return names; } set { names = value; } }
+
+        DataTable MyDataTable { get; set; }
 
         private MySqlConnection conn;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -37,6 +36,8 @@ namespace NoteStudenti
             names = new ObservableCollection<string>();
 
             DataContext = this;
+
+            MyDataTable = new DataTable();
 
             string connString = ConfigurationManager.ConnectionStrings["connString"].ToString();
 
@@ -107,6 +108,7 @@ namespace NoteStudenti
                 Names.Clear();
 
                 string SqlSelectCommand = "SELECT Name FROM class;";
+
                 string SqlDeleteCommand = string.Format("DELETE FROM class WHERE Name='{0}';", NameBox.Text);
 
                 try
@@ -131,6 +133,89 @@ namespace NoteStudenti
                 {
                     MessageBox.Show("Connection failed" + except.Data);
                 }
+            }
+        }
+
+        private void AddGrade(object sender, RoutedEventArgs e)
+        {
+            if (SubjectBox.Text != "" && MarkBox.Text != "")
+            {
+                string Name = MyGuiListBox.SelectedItem.ToString();
+
+                string SqlAddComm = string.Format("INSERT INTO grades (Id, Subject, Mark) VALUES ((SELECT Id FROM class WHERE Name='{0}'), '{1}', {2});" , Name, SubjectBox.Text, MarkBox.Text);
+
+                string SqlSelectCommand = string.Format("SELECT * FROM grades WHERE Id=(SELECT Id FROM class WHERE Name='{0}');", Name);
+
+                try
+                {
+                    MyDataTable.Clear();
+
+                    MySqlCommand ins = new MySqlCommand(SqlAddComm, conn);
+                    MySqlDataAdapter sda = new MySqlDataAdapter(SqlSelectCommand, conn);
+
+                    ins.ExecuteNonQuery();
+                    sda.Fill(MyDataTable);
+
+                    MyGuiTable.DataContext = MyDataTable;
+                    MyGuiTable.ItemsSource = MyDataTable.DefaultView;
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Failed connection");
+                }
+            }
+        }
+
+        private void RemoveGrade(object sender, RoutedEventArgs e)
+        {
+            if (SubjectBox.Text != "" && MarkBox.Text != "")
+            {
+                string Name = MyGuiListBox.SelectedItem.ToString();
+
+                string SqlRemoveCommand = string.Format("DELETE FROM grades WHERE Subject='{0}' OR Mark='{1}';" , SubjectBox.Text, MarkBox.Text);
+
+                string SqlSelectCommand = string.Format("SELECT * FROM grades WHERE Id=(SELECT Id FROM class WHERE Name='{0}');", Name);
+
+                try
+                {
+                    MyDataTable.Clear();
+
+                    MySqlCommand ins = new MySqlCommand(SqlRemoveCommand , conn);
+                    MySqlDataAdapter sda = new MySqlDataAdapter(SqlSelectCommand, conn);
+
+                    ins.ExecuteNonQuery();
+                    sda.Fill(MyDataTable);
+
+                    MyGuiTable.DataContext = MyDataTable;
+                    MyGuiTable.ItemsSource = MyDataTable.DefaultView;
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Failed connection");
+                }
+            }
+        }
+
+        private void SelectedName(object sender, MouseButtonEventArgs e)
+        {
+            string Name = MyGuiListBox.SelectedItem.ToString();
+
+            string SqlSelectCommand = string.Format("SELECT * FROM grades WHERE Id=(SELECT Id FROM class WHERE Name='{0}');", Name);
+
+            try
+            {
+                MyDataTable.Clear();
+
+                MySqlDataAdapter sda = new MySqlDataAdapter(SqlSelectCommand, conn);
+
+                sda.Fill(MyDataTable);
+
+                MyGuiTable.DataContext = MyDataTable;
+                MyGuiTable.ItemsSource = MyDataTable.DefaultView;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Failed connection");
             }
         }
     }
