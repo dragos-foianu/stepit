@@ -94,9 +94,9 @@ namespace DatabaseApp
             try
             {
                 MyDataTable.Clear();
-                MySqlCommand del = new MySqlCommand(deleteCommand, conn);
+                MySqlCommand ins = new MySqlCommand(deleteCommand, conn);
                 MySqlDataAdapter sda = new MySqlDataAdapter(sqlCommand, conn);
-                del.ExecuteNonQuery();
+                ins.ExecuteNonQuery();
                 sda.Fill(MyDataTable);
 
                 MyGuiTable.DataContext = MyDataTable;
@@ -112,28 +112,79 @@ namespace DatabaseApp
 
         private void updateButton(object sender, RoutedEventArgs e)
         {
+
+
             string id = IdBox.Text;
             string nume = NumeBox.Text;
             string nota = NotaBox.Text;
             string comment = CommentBox.Text;
 
             string sqlCommand = "select * from studenti;";
-            string updateCommand = String.Format("update studenti set Nume='{0}', Nota='{1}', Comment='{2}' where ID={3};", nume, nota, comment, id);
+            string insertCommand = String.Format("Update studenti set nume='{0}', nota='{1}', comment='{2}' where id={3};" , nume, nota, comment,id );
 
             try
             {
                 MyDataTable.Clear();
-                MySqlCommand upd = new MySqlCommand(updateCommand, conn);
+                MySqlCommand ins = new MySqlCommand(insertCommand, conn);
                 MySqlDataAdapter sda = new MySqlDataAdapter(sqlCommand, conn);
-                upd.ExecuteNonQuery();
+                ins.ExecuteNonQuery();
                 sda.Fill(MyDataTable);
 
                 MyGuiTable.DataContext = MyDataTable;
                 MyGuiTable.ItemsSource = MyDataTable.DefaultView;
 
-                MessageBox.Show("Remove Command Executed!");
+                MessageBox.Show("Update Command Executed!");
             }
-            catch (Exception)
+            catch (Exception )
+            {
+                MessageBox.Show("Connection Error!");
+            }
+        }
+
+        private void searchButton(object sender, RoutedEventArgs e)
+        {
+            string id = IdBox.Text;
+            string nume = NumeBox.Text;
+            string nota = NotaBox.Text;
+            string comment = CommentBox.Text;
+
+            
+
+            string sqlCommand = String.Format("select * from studenti where Nume='{0}';",nume);
+            //string insertCommand = String.Format("Update studenti set nume='{0}', nota='{1}', comment='{2}' where id={3};", nume, nota, comment, id);
+
+            try
+            {
+                MyDataTable.Clear();
+               // MySqlCommand ins = new MySqlCommand(insertCommand, conn);
+                MySqlDataAdapter sda = new MySqlDataAdapter(sqlCommand, conn);
+                //ins.ExecuteNonQuery();
+                sda.Fill(MyDataTable);
+
+                MyGuiTable.DataContext = MyDataTable;
+                MyGuiTable.ItemsSource = MyDataTable.DefaultView;
+
+                MessageBox.Show("Search Command Executed!");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Connection Error!");
+            }
+        }
+
+        private void refreshButton(object sender, RoutedEventArgs e)
+        {
+            MyDataTable.Clear();
+            string sqlCommand = "select * from studenti;";
+            try
+            {
+                MySqlDataAdapter sda = new MySqlDataAdapter(sqlCommand, conn);
+                sda.Fill(MyDataTable);
+
+                MyGuiTable.DataContext = MyDataTable;
+                MyGuiTable.ItemsSource = MyDataTable.DefaultView;
+            }
+            catch (Exception )
             {
                 MessageBox.Show("Connection Error!");
             }
