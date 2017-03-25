@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NoteStudenti"
         mc:Ignorable="d"
-        Title="MainWindow" Height="500" Width="675">
+        Title="MainWindow" ResizeMode="NoResize" Height="500" Width="675">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
@@ -25,24 +25,61 @@
             <Label Grid.Row="0" Content="Names" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30"/>
 
             <!-- Name List -->
-            <ListBox Grid.Row="1" ItemsSource="{Binding Names}"/>
+            <ListBox Grid.Row="1" MouseUp="SelectedName" x:Name="MyGuiListBox" ItemsSource="{Binding Names}"/>
 
-            <!-- Add Name List -->
+            <!-- TextBoxes Name List -->
             <TextBox Grid.Row="2" x:Name="NameBox"/>
 
-            <!-- Edit Name List -->
+            <!-- Buttons Name List -->
             <Grid Grid.Row="3">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition />
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
-                
+
                 <Button Grid.Column="0" Content="+" Click="AddName" FontSize="30"/>
                 <Button Grid.Column="1" Content="-" Click="RemoveName" FontSize="30"/>
             </Grid>
+        </Grid>
+        
+        <!-- Grades Database -->
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
             
-            <!-- Grades Database -->
+            <!-- DataTable Name-->
+            <Label Grid.Row="0" Content="Grades" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30"/>
+
+            <!-- DataTable -->
+            <DataGrid Grid.Row="1" x:Name="MyGuiTable" CanUserAddRows="False" MinColumnWidth="147" CanUserResizeColumns="False" CanUserReorderColumns="False" CanUserSortColumns="False" />
             
+            <!-- TextBoxes DataTable-->
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <TextBox Grid.Column="0" x:Name="SubjectBox" />
+
+                <TextBox Grid.Column="1" x:Name="MarkBox" />
+            </Grid>
+        
+            <!-- Buttons DataTable-->
+            <Grid Grid.Row="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <Button Grid.Column="0" Content="Add" Click="AddGrade" />
+
+                <Button Grid.Column="1" Content="Remove" Click="RemoveGrade" />
+            </Grid>
         </Grid>
     </Grid>
 </Window>
