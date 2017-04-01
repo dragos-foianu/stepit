@@ -7,6 +7,27 @@
         mc:Ignorable="d"
         Title="VanzariWindow" Height="300" Width="300">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+
+        <DataGrid x:Name="dataGrid"/>
+        <UniformGrid Grid.Row="1" Rows="1">
+            <TextBlock Text="ProdusId"></TextBlock>
+            <TextBlock Text="ClientId"></TextBlock>
+            <TextBlock Text="AngajatId"></TextBlock>
+        </UniformGrid>
+        <UniformGrid Grid.Row="2" Rows="1">
+            <TextBox x:Name="produsIdInput"/>
+            <TextBox x:Name="clientIdInput"/>
+            <TextBox x:Name="angajatIdInput"/>
+        </UniformGrid>
+        <UniformGrid Grid.Row="3" Rows="1">
+            <Button Content="Add" Click="add"/>
+            <Button Content="Remove" Click="remove"/>
+        </UniformGrid>
     </Grid>
 </Window>

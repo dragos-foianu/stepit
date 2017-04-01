@@ -25,5 +25,9 @@ namespace Magazin
             throw new UnintentionalCodeFirstException();
         }
     
+        public DbSet<Angajati> Angajatis { get; set; }
+        public DbSet<Clienti> Clientis { get; set; }
+        public DbSet<Produse> Produses { get; set; }
+        public DbSet<Vanzari> Vanzaris { get; set; }
     }
 }

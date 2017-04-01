@@ -7,6 +7,25 @@
         mc:Ignorable="d"
         Title="AngajatiWindow" Height="300" Width="300">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+
+        <DataGrid x:Name="dataGrid"/>
+        <UniformGrid Grid.Row="1" Rows="1">
+            <TextBlock Text="Nume"></TextBlock>
+            <TextBlock Text="Salariu"></TextBlock>
+        </UniformGrid>
+        <UniformGrid Grid.Row="2" Rows="1">
+            <TextBox x:Name="numeInput"/>
+            <TextBox x:Name="salariuInput"/>
+        </UniformGrid>
+        <UniformGrid Grid.Row="3" Rows="1">
+            <Button Content="Add" Click="add"/>
+            <Button Content="Remove" Click="remove"/>
+        </UniformGrid>
     </Grid>
 </Window>
