@@ -13,12 +13,14 @@
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
 
+        <DataGrid x:Name="ha"/>
+        
         <UniformGrid Grid.Row="2" Rows="1">
             <Button Content="remove" Click="removeB"/>
             <Button Content="add" Click="addB"/>
 
         </UniformGrid>
-
+             
         <UniformGrid Grid.Row="1" Rows="1">
             <TextBox x:Name="produsID"/>
             <TextBox x:Name="clientID"/>

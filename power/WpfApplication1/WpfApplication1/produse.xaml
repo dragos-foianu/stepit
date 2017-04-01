@@ -13,6 +13,8 @@
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
 
+        <DataGrid x:Name="hah"/>
+        
         <UniformGrid Grid.Row="2" Rows="1">
             <Button Content="remove" Click="removeB"/>
             <Button Content="add" Click="addB"/>
@@ -20,8 +22,8 @@
         </UniformGrid>
 
         <UniformGrid Grid.Row="1" Rows="1">
-            <TextBox x:Name="pret"/>
             <TextBox x:Name="nume"/>
+            <TextBox x:Name="pret"/>
             <TextBox x:Name="stoc"/>
 
         </UniformGrid>

@@ -53,6 +53,7 @@ namespace WpfApplication1
 
             Angajati client = new Angajati();
             client.Nume = nume.Text;
+            client.Salariu = int.Parse(salariu.Text);
             db.Angajatis.Add(client);
             db.SaveChanges();
 
