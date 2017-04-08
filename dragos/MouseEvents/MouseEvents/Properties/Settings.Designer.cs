@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Graphs.Properties
+namespace MouseEvents.Properties
 {
 
 
