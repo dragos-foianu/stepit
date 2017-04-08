@@ -7,38 +7,8 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="900" Width="1600">
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="10*"/>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="10*"/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="5*"/>
-            <ColumnDefinition Width="5*"/>
-        </Grid.ColumnDefinitions>
-        <DataGrid Grid.Row ="3" Grid.Column="0"  x:Name="MyGuiTable" CanUserAddRows="False"/>
-        <DataGrid Grid.Row="3" Grid.Column="1" x:Name="MyGuiTable2" CanUserAddRows="False" />
-        <UniformGrid Grid.Row="1" Rows="1">
-            <TextBox x:Name="IdBox"/>
-            <TextBox x:Name="NameBox"/>
-            <TextBox x:Name="XBox"/>
-            <TextBox x:Name="YBox"/>
-        </UniformGrid>
-        <UniformGrid Grid.Row="1" Grid.Column="1" Rows="1">
-            <TextBox x:Name="FromBox"/>
-            <TextBox x:Name="ToBox"/>
-        </UniformGrid>
-        <UniformGrid Grid.Row="2" Rows="1">
-            <Button Content="Add" Click="addButton"/>
-            <Button Content="Remove" Click="removeButton"/>
-        </UniformGrid>
-        <UniformGrid Grid.Row="2" Grid.Column="1" Rows="1">
-            <Button Content="Add" Click="addToFromButton"/>
-            <Button Content="Remove" Click="removeToFromButton"/>
-        </UniformGrid>
-        <Canvas Grid.Row="0" Grid.ColumnSpan="2" x:Name="world" Background="White" Margin="20px">
-            <Path Stroke="Black" StrokeThickness="2" Canvas.Top="1" Canvas.Left="1"/>
+        <Canvas x:Name="world" Background="White" Margin="20px">
+            <Path Stroke="Black" StrokeThickness="2" Canvas.Top="0" Canvas.Left="0"/>
         </Canvas>
     </Grid>
 </Window>
