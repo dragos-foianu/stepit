@@ -1,0 +1,34 @@
+﻿<Window x:Class="Graphs.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Graphs"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="900" Width="1600">
+    <Grid ShowGridLines="True">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+
+        <UniformGrid Columns="1">
+            <ListBox ItemsSource="{Binding World}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <UniformGrid Rows="1">
+                            <TextBlock Text="{Binding Path=Info.X, StringFormat='\{0:N0\},'}"/>
+                            <TextBlock Text="{Binding Path=Info.Y, StringFormat=N0}"/>
+                        </UniformGrid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </UniformGrid>
+
+        <Grid Background="Black" Grid.Column="1">
+            <Canvas x:Name="worldCanvas" Background="White" Margin="20">
+                <Path Stroke="Black" StrokeThickness="2" Canvas.Top="0" Canvas.Left="0"/>
+            </Canvas>
+        </Grid>
+    </Grid>
+</Window>
