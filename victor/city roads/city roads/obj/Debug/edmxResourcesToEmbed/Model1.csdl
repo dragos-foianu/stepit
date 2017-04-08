@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Database1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="Database1Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Drums" EntityType="Database1Model.Drum" />
+    <EntitySet Name="Oras1" EntityType="Database1Model.Oras" />
+  </EntityContainer>
+  <EntityType Name="Drum">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="From" Type="Int32" />
+    <Property Name="to" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Oras">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nume" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="x" Type="Int32" />
+    <Property Name="y" Type="Int32" />
+  </EntityType>
+</Schema>
