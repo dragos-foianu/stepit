@@ -1,0 +1,34 @@
+﻿<Window x:Class="WpfApplication3.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApplication3"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="4*"/>
+        </Grid.ColumnDefinitions>
+
+        <ListBox Grid.Column="1" IsEnabled="False" ItemsSource="{Binding Log}"></ListBox>
+
+        <Button Content="Reset" Click="resetClicked"/>
+
+        <UniformGrid Grid.Column="2" Rows="3" Columns="3">
+            <Button x:Name="button00" Content="{Binding Game[0][0]}" FontSize="40" Click="boardClicked00"/>
+            <Button x:Name="button01" Content="{Binding Game[0][1]}" FontSize="40" Click="boardClicked01"/>
+            <Button x:Name="button02" Content="{Binding Game[0][2]}" FontSize="40" Click="boardClicked02"/>
+            <Button x:Name="button10" Content="{Binding Game[1][0]}" FontSize="40" Click="boardClicked10"/>
+            <Button x:Name="button11" Content="{Binding Game[1][1]}" FontSize="40" Click="boardClicked11"/>
+            <Button x:Name="button12" Content="{Binding Game[1][2]}" FontSize="40" Click="boardClicked12"/>
+            <Button x:Name="button20" Content="{Binding Game[2][0]}" FontSize="40" Click="boardClicked20"/>
+            <Button x:Name="button21" Content="{Binding Game[2][1]}" FontSize="40" Click="boardClicked21"/>
+            <Button x:Name="button22" Content="{Binding Game[2][2]}" FontSize="40" Click="boardClicked22"/>
+        </UniformGrid>
+
+    </Grid>
+</Window>
