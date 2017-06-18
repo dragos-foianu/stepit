@@ -18,16 +18,23 @@
 
         <Button Content="Reset" Click="resetClicked"/>
 
-        <UniformGrid Grid.Column="2" Rows="3" Columns="3">
+        <UniformGrid Grid.Column="2" Rows="4" Columns="4">
             <Button x:Name="button00" Content="{Binding Game[0][0]}" FontSize="40" Click="boardClicked00"/>
             <Button x:Name="button01" Content="{Binding Game[0][1]}" FontSize="40" Click="boardClicked01"/>
             <Button x:Name="button02" Content="{Binding Game[0][2]}" FontSize="40" Click="boardClicked02"/>
+            <Button x:Name="button03" Content="{Binding Game[0][3]}" FontSize="40" Click="boardClicked03"/>
             <Button x:Name="button10" Content="{Binding Game[1][0]}" FontSize="40" Click="boardClicked10"/>
             <Button x:Name="button11" Content="{Binding Game[1][1]}" FontSize="40" Click="boardClicked11"/>
             <Button x:Name="button12" Content="{Binding Game[1][2]}" FontSize="40" Click="boardClicked12"/>
+            <Button x:Name="button13" Content="{Binding Game[1][3]}" FontSize="40" Click="boardClicked13"/>
             <Button x:Name="button20" Content="{Binding Game[2][0]}" FontSize="40" Click="boardClicked20"/>
             <Button x:Name="button21" Content="{Binding Game[2][1]}" FontSize="40" Click="boardClicked21"/>
             <Button x:Name="button22" Content="{Binding Game[2][2]}" FontSize="40" Click="boardClicked22"/>
+            <Button x:Name="button23" Content="{Binding Game[2][3]}" FontSize="40" Click="boardClicked23"/>
+            <Button x:Name="button30" Content="{Binding Game[3][0]}" FontSize="40" Click="boardClicked30"/>
+            <Button x:Name="button31" Content="{Binding Game[3][1]}" FontSize="40" Click="boardClicked31"/>
+            <Button x:Name="button32" Content="{Binding Game[3][2]}" FontSize="40" Click="boardClicked32"/>
+            <Button x:Name="button33" Content="{Binding Game[3][3]}" FontSize="40" Click="boardClicked33"/>
         </UniformGrid>
 
     </Grid>
