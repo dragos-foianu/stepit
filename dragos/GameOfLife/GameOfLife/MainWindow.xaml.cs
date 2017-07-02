@@ -125,7 +125,70 @@ namespace GameOfLife
 
         void tick(object sender, EventArgs e)
         {
+            bool[][] state = new bool[SIZE][];
+            for (int i = 0; i < SIZE; i++)
+                state[i] = new bool[SIZE];
 
+            for (int i = 0; i < SIZE; i++)
+                for (int j = 0; j < SIZE; j++)
+                {
+                    if (Game[i][j].Fill == Brushes.Black)
+                        state[i][j] = true;
+                    else
+                        state[i][j] = false;
+                }
+
+            for (int i = 0; i < SIZE; i++)
+            {
+                for (int j = 0; j < SIZE; j++)
+                {
+                    update(i, j, state);
+                }
+            }
+        }
+
+        void update(int x, int y, bool[][] state)
+        {
+            int neighbors = 0;
+
+            int r1 = x - 1;
+            int r2 = x + 1;
+            int c1 = y - 1;
+            int c2 = y + 1;
+
+            if (r1 < 0) r1 = 0;
+            if (r1 >= SIZE) r1 = SIZE - 1;
+
+            if (r2 < 0) r2 = 0;
+            if (r2 >= SIZE) r2 = SIZE - 1;
+
+            if (c1 < 0) c1 = 0;
+            if (c1 >= SIZE) c1 = SIZE - 1;
+
+            if (c2 < 0) c2 = 0;
+            if (c2 >= SIZE) c2 = SIZE - 1;
+
+            for (int i = r1; i <= r2; i++)
+            {
+                for (int j = c1; j <= c2; j++)
+                {
+                    if (i == x && j == y)
+                        continue;
+                    if (state[i][j] == true)
+                        neighbors++;
+                }
+            }
+
+            if (state[x][y] == true)
+            {
+                if (neighbors == 0 || neighbors == 1 || neighbors >= 4)
+                    Game[x][y].Fill = Brushes.White;
+            }
+            else
+            {
+                if (neighbors == 3)
+                    Game[x][y].Fill = Brushes.Black;
+            }
         }
     }
 }
