@@ -55,6 +55,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Classes\Product.cs" />
+    <Compile Include="Classes\Transaction.cs" />
     <Compile Include="Windows\BuyWindow.xaml.cs">
       <DependentUpon>BuyWindow.xaml</DependentUpon>
     </Compile>

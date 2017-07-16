@@ -5,8 +5,57 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MagazinDuminica.Windows"
         mc:Ignorable="d"
-        Title="BuyWindow" Height="300" Width="300">
+        Title="BuyWindow" Height="300" Width="700">
     <Grid>
-        <TextBlock Text="I am the buy window"></TextBlock>
+
+        <ListBox ItemsSource="{Binding Products}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid Margin="10" Width="600">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Rectangle Fill="Black" Grid.Column="0"></Rectangle>
+                        <TextBlock Text="{Binding Name}" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                        <UniformGrid Grid.Column="2">
+                            <TextBlock Text="price" VerticalAlignment="Center"></TextBlock>
+                            <TextBlock Text="{Binding Price}" VerticalAlignment="Center"></TextBlock>
+                            <TextBlock Text="stock" VerticalAlignment="Center"></TextBlock>
+                            <TextBlock Text="{Binding Stock}" VerticalAlignment="Center"></TextBlock>
+                        </UniformGrid>
+                        <Button Content="Buy" Grid.Column="3" Click="buyProduct"></Button>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        
+        
     </Grid>
 </Window>
+    
+    <!--
+    <Grid Margin="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+
+            <Rectangle Fill="Black" Grid.Column="0"></Rectangle>
+            <TextBlock Text="Name" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+            <UniformGrid Grid.Column="2">
+                <TextBlock Text="price" VerticalAlignment="Center"></TextBlock>
+                <TextBlock Text="3" VerticalAlignment="Center"></TextBlock>
+                <TextBlock Text="stock" VerticalAlignment="Center"></TextBlock>
+                <TextBlock Text="100" VerticalAlignment="Center"></TextBlock>                
+            </UniformGrid>
+            <Button Content="Buy" Grid.Column="3"></Button>
+        </Grid>
+    
+    
+    -->

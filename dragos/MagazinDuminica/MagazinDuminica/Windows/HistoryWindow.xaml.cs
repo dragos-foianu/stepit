@@ -1,5 +1,7 @@
-﻿using System;
+﻿using MagazinDuminica.Classes;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,9 +21,16 @@ namespace MagazinDuminica.Windows
     /// </summary>
     public partial class HistoryWindow : Window
     {
+        public ObservableCollection<Product> Products { get; set; }
+        public ObservableCollection<Transaction> Transactions { get; set; }
+
+
         public HistoryWindow()
         {
             InitializeComponent();
+
+            Products = ((MainWindow)Application.Current.MainWindow).Products;
+            Transactions = ((MainWindow)Application.Current.MainWindow).Transactions;
         }
     }
 }
