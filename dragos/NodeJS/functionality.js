@@ -51,6 +51,43 @@ var validateToken = function(token) {
 	return false
 }
 
+functionality.help = function(req, res) {
+	res.json(
+		[
+			{ 
+				url: '/help',
+				type: 'GET',
+				param: []
+			},
+			{ 
+				url: '/login',
+				type: 'GET',
+				param: []
+			},
+			{ 
+				url: '/rooms/list',
+				type: 'GET',
+				param: ['token']
+			},
+			{ 
+				url: '/users/list',
+				type: 'GET',
+				param: ['token']
+			},
+			{ 
+				url: '/room/:id/messages/list',
+				type: 'GET',
+				param: ['token']
+			},
+			{ 
+				url: '/room/:id/messages/add',
+				type: 'POST',
+				param: ['token', 'content']
+			},
+		]
+	)
+}
+
 functionality.login = function(req, res) {
 	setCORSHeaders(res)
 
@@ -82,7 +119,7 @@ functionality.login = function(req, res) {
 functionality.listRooms = function(req, res) {
 	setCORSHeaders(res)
 
-	if (validateToken(req.body.token)) {
+	if (validateToken(req.query.token)) {
 		// build a list of rooms with (id, name)
 		roomSummary = []
 		for (room of rooms) {
@@ -102,7 +139,7 @@ functionality.listRooms = function(req, res) {
 functionality.listUsers = function(req, res) {
 	setCORSHeaders(res)
 
-	if (validateToken(req.body.token)) {
+	if (validateToken(req.query.token)) {
 		// build a list of rooms with (id, name)
 		userSummary = []
 		for (user of users) {
@@ -122,7 +159,7 @@ functionality.listUsers = function(req, res) {
 functionality.listMessagesInRoom = function(req, res) {
 	setCORSHeaders(res);
 
-	if (validateToken(req.body.token)) {
+	if (validateToken(req.query.token)) {
 		roomId = req.params.id
 
 		messagesSummary = []
@@ -149,9 +186,6 @@ functionality.addMessageToRoom = function(req, res) {
 	setCORSHeaders(res);
 
 	roomId = req.params.id
-	console.log(req.body.token);
-	console.log(req.body.content);
-
 	poster = getUserByToken(req.body.token)
 
 	if (poster == undefined) {

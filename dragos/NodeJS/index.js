@@ -8,11 +8,13 @@ var app = express();
 var port = 8080;
 
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded());
 
 var router = express.Router();
 
 var functionality = require('./functionality');
 
+router.get('/help', functionality.help);
 router.get('/login', functionality.login);
 router.get('/rooms/list', functionality.listRooms);
 router.get('/users/list', functionality.listUsers);
